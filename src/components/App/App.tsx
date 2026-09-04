@@ -38,6 +38,8 @@ function App() {
       setLoader(false);
       setMovies([]);
       setError(true);
+    } finally {
+      setLoader(false);
     }
   };
 
