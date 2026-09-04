@@ -18,24 +18,18 @@ function App() {
 
   const handleSearch = async (query: string) => {
     try {
-      if (!query.trim()) {
-        return toast.error('Please enter your search query.');
-      }
-
+      setError(false);
+      setMovies([]);
       setLoader(true);
       const res = await fetchMovies(query);
       console.log(res);
 
       if (res.length === 0) {
         toast.error('No movies found for your request.');
-        setLoader(false);
-        setMovies([]);
       }
 
-      setLoader(false);
       setMovies(res);
     } catch (error) {
-      setLoader(false);
       setMovies([]);
       setError(true);
     } finally {
@@ -45,6 +39,7 @@ function App() {
 
   const closeModal = () => {
     setIsModalOpen(false);
+    setSelectedMovie(null);
   };
 
   const movieClick = (movie: Movie) => {
