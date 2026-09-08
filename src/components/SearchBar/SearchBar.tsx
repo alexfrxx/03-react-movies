@@ -1,13 +1,8 @@
-import { Formik, Form, Field, type FormikHelpers } from 'formik';
 import styles from './SearchBar.module.css';
 import toast from 'react-hot-toast';
 
 interface SearchBarProps {
   onSubmit: (value: string) => void;
-}
-
-interface FormikInit {
-  query: string;
 }
 
 export default function SearchBar({ onSubmit }: SearchBarProps) {
