@@ -11,11 +11,8 @@ interface FormikInit {
 }
 
 export default function SearchBar({ onSubmit }: SearchBarProps) {
-  const handleSubmit = (
-    values: FormikInit,
-    actions: FormikHelpers<FormikInit>
-  ) => {
-    const value = values.query.trim();
+  const handleSubmit = (formData: FormData) => {
+    const value = formData.get('query') as string;
 
     if (!value) {
       toast.error('Please enter your search query.');
@@ -23,7 +20,6 @@ export default function SearchBar({ onSubmit }: SearchBarProps) {
     }
 
     onSubmit(value);
-    actions.resetForm();
   };
 
   return (
@@ -37,21 +33,19 @@ export default function SearchBar({ onSubmit }: SearchBarProps) {
         >
           Powered by TMDB
         </a>
-        <Formik initialValues={{ query: '' }} onSubmit={handleSubmit}>
-          <Form className={styles.form}>
-            <Field
-              className={styles.input}
-              type="text"
-              name="query"
-              autoComplete="off"
-              placeholder="Search movies..."
-              autoFocus
-            />
-            <button className={styles.button} type="submit">
-              Search
-            </button>
-          </Form>
-        </Formik>
+        <form className={styles.form} action={handleSubmit}>
+          <input
+            className={styles.input}
+            type="text"
+            name="query"
+            autoComplete="off"
+            placeholder="Search movies..."
+            autoFocus
+          />
+          <button className={styles.button} type="submit">
+            Search
+          </button>
+        </form>
       </div>
     </header>
   );
