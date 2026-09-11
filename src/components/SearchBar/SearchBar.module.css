@@ -8,7 +8,7 @@
   padding: 16px 30px;
   display: flex;
   justify-content: space-between;
-  background-color: rgb(5, 5, 60);
+  background-color: rgb(7, 7, 78);
   border-radius: 100px;
   align-items: center;
   flex-wrap: wrap;
@@ -17,7 +17,7 @@
 }
 
 .link {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 500;
   display: flex;
   align-items: center;
@@ -32,23 +32,33 @@
 }
 
 .input {
-  padding: 10px 12px;
+  padding: 10px 20px;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
   width: 500px;
+  border-radius: 100px;
+  outline: none;
 }
 
 .button {
   padding: 10px 20px;
   font-size: 16px;
-  background-color: #0a66c2;
+  background-color: #bb0808;
   color: white;
   border: none;
-  border-radius: 4px;
-  cursor: pointer;
+  border-radius: 100px;
+  transition:
+    background-color 0.4s ease,
+    transform 0.4s ease;
 }
 
 .button:hover {
-  background-color: #004182;
+  background-color: #5400b5;
+  transform: scale(0.95);
+}
+
+.x {
+  color: #ff0202;
+  font-size: 25px;
 }

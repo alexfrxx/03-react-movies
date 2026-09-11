@@ -26,7 +26,9 @@ export default function SearchBar({ onSubmit }: SearchBarProps) {
             <svg width="30" height="30">
               <use href="/sprite.svg#tv"></use>
             </svg>
-            KinoPoisk
+            <p>
+              Movi<span className={styles.x}>X</span>
+            </p>
           </a>
           <form className={styles.form} action={handleSubmit}>
             <input
