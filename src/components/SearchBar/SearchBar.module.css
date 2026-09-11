@@ -1,31 +1,31 @@
 .header {
-  padding: 20px;
-  background-color: #ffffff;
-  border-bottom: 1px solid #e0e0e0;
-  margin-bottom: 20px;
+  border-radius: 100px;
+  padding: 40px 0 20px 0;
 }
 
 .container {
   max-width: 1440px;
-  margin: 0 auto;
+  padding: 16px 30px;
   display: flex;
   justify-content: space-between;
+  background-color: rgb(5, 5, 60);
+  border-radius: 100px;
   align-items: center;
   flex-wrap: wrap;
   gap: 12px;
+  box-shadow: 0 0 10px 2px rgba(246, 245, 247, 0.866);
 }
 
 .link {
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 500;
-  color: #0a66c2;
-  text-decoration: none;
-  transition: color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
 }
 
 .link:hover {
-  color: #004182;
-  text-decoration: underline;
 }
 
 .form {

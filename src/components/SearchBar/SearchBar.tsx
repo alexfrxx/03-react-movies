@@ -1,5 +1,6 @@
 import styles from './SearchBar.module.css';
 import toast from 'react-hot-toast';
+import Container from '../Container/Container';
 
 interface SearchBarProps {
   onSubmit: (value: string) => void;
@@ -18,30 +19,30 @@ export default function SearchBar({ onSubmit }: SearchBarProps) {
   };
 
   return (
-    <header className={styles.header}>
-      <div className={styles.container}>
-        <a
-          className={styles.link}
-          href="https://www.themoviedb.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by TMDB
-        </a>
-        <form className={styles.form} action={handleSubmit}>
-          <input
-            className={styles.input}
-            type="text"
-            name="query"
-            autoComplete="off"
-            placeholder="Search movies..."
-            autoFocus
-          />
-          <button className={styles.button} type="submit">
-            Search
-          </button>
-        </form>
-      </div>
-    </header>
+    <Container>
+      <header className={styles.header}>
+        <div className={styles.container}>
+          <a className={styles.link} href="/index.html">
+            <svg width="24" height="24">
+              <use href="/sprite.svg#tv"></use>
+            </svg>
+            Films
+          </a>
+          <form className={styles.form} action={handleSubmit}>
+            <input
+              className={styles.input}
+              type="text"
+              name="query"
+              autoComplete="off"
+              placeholder="Search movies..."
+              autoFocus
+            />
+            <button className={styles.button} type="submit">
+              Search
+            </button>
+          </form>
+        </div>
+      </header>
+    </Container>
   );
 }

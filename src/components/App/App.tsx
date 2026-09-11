@@ -52,13 +52,21 @@ function App() {
   };
 
   return (
-    <>
+    <div className={css.app}>
       <SearchBar
         onSubmit={(query) => {
           setQuery(query);
           setPage(1);
         }}
       ></SearchBar>
+
+      <Toaster position="top-center" reverseOrder={false} />
+      {isLoading && <Loader />}
+      {isError ? (
+        <ErrorMessage />
+      ) : (
+        <MovieGrid onSelect={openModal} movies={data?.results ?? []} />
+      )}
       {data && data.total_pages > 1 && (
         <ReactPaginate
           pageCount={data?.total_pages ?? 0}
@@ -72,18 +80,10 @@ function App() {
           forcePage={page - 1}
         />
       )}
-
-      <Toaster position="top-center" reverseOrder={false} />
-      {isLoading && <Loader />}
-      {isError ? (
-        <ErrorMessage />
-      ) : (
-        <MovieGrid onSelect={openModal} movies={data?.results ?? []} />
-      )}
       {isModalOpen && selectedMovie && (
         <MovieModal onClose={closeModal} movie={selectedMovie}></MovieModal>
       )}
-    </>
+    </div>
   );
 }
 
