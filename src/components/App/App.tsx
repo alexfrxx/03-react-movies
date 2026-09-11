@@ -9,7 +9,18 @@ import type { Movie } from '../../types/movie';
 import { toast, Toaster } from 'react-hot-toast';
 import { useEffect, useState } from 'react';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
-import ReactPaginate from 'react-paginate';
+
+import ReactPaginateModule from 'react-paginate';
+import type { ReactPaginateProps } from 'react-paginate';
+import type { ComponentType } from 'react';
+
+type ModuleWithDefault<T> = { default: T };
+
+const ReactPaginate = (
+  ReactPaginateModule as unknown as ModuleWithDefault<
+    ComponentType<ReactPaginateProps>
+  >
+).default;
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -53,10 +64,12 @@ function App() {
           pageCount={data?.total_pages ?? 0}
           onPageChange={({ selected }) => setPage(selected + 1)}
           pageRangeDisplayed={5}
-          nextLabel=">"
-          previousLabel="<"
+          nextLabel="→"
+          previousLabel="←"
           activeClassName={css.active}
           containerClassName={css.pagination}
+          marginPagesDisplayed={1}
+          forcePage={page - 1}
         />
       )}
 
