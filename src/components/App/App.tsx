@@ -4,7 +4,7 @@ import MovieGrid from '../MovieGrid/MovieGrid';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import Loader from '../Loader/Loader';
 import MovieModal from '../MovieModal/MovieModal';
-import fetchMovies from '../../services/movieService';
+import fetchMovies, { fetchFirstMovies } from '../../services/movieService';
 import type { Movie } from '../../types/movie';
 import { toast, Toaster } from 'react-hot-toast';
 import { useEffect, useState } from 'react';
@@ -30,8 +30,13 @@ function App() {
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ['query', query, page],
-    queryFn: () => fetchMovies({ str: query, page }),
-    enabled: Boolean(query),
+    queryFn: () => {
+      if (!query) {
+        return fetchFirstMovies();
+      }
+
+      return fetchMovies({ str: query, page });
+    },
     placeholderData: keepPreviousData
   });
 
@@ -67,7 +72,7 @@ function App() {
       ) : (
         <MovieGrid onSelect={openModal} movies={data?.results ?? []} />
       )}
-      {data && data.total_pages > 1 && (
+      {query && data && data.total_pages > 1 && (
         <ReactPaginate
           pageCount={data?.total_pages ?? 0}
           onPageChange={({ selected }) => setPage(selected + 1)}

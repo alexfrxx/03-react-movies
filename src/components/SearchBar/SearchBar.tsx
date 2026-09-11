@@ -23,10 +23,10 @@ export default function SearchBar({ onSubmit }: SearchBarProps) {
       <header className={styles.header}>
         <div className={styles.container}>
           <a className={styles.link} href="/index.html">
-            <svg width="24" height="24">
+            <svg width="30" height="30">
               <use href="/sprite.svg#tv"></use>
             </svg>
-            Films
+            KinoPoisk
           </a>
           <form className={styles.form} action={handleSubmit}>
             <input
