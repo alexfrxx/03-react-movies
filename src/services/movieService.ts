@@ -4,6 +4,7 @@ import type { Movie } from '../types/movie';
 const key = import.meta.env.VITE_TMDB_TOKEN;
 const url = 'https://api.themoviedb.org/3/search/movie';
 const baseUrl = 'https://api.themoviedb.org/3/discover/movie';
+const upcomingUrl = 'https://api.themoviedb.org/3/movie';
 
 interface FetchMovieParams {
   page: number;
@@ -42,5 +43,21 @@ export async function fetchFirstMovies(): Promise<FetchMoviesProps> {
       Authorization: `Bearer ${key}`
     }
   });
+  return response.data;
+}
+
+export async function fetchCommingSoonMovies(): Promise<FetchMoviesProps> {
+  const response = await axios.get<FetchMoviesProps>(
+    `${upcomingUrl}/upcoming`,
+    {
+      params: {
+        page: 1
+      },
+      headers: {
+        Authorization: `Bearer ${key}`
+      }
+    }
+  );
+  console.log(response.data);
   return response.data;
 }

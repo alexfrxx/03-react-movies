@@ -3,6 +3,10 @@ import type { Movie } from '../../types/movie';
 import Container from '../Container/Container';
 import { useQuery } from '@tanstack/react-query';
 import { fetchFirstMovies } from '../../services/movieService';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
 
 interface TrendingMovieProps {
   onSelect: (movie: Movie) => void;
@@ -18,11 +22,15 @@ export default function TrendingMovieGrid({ onSelect }: TrendingMovieProps) {
     <section className={css.trendingMovie}>
       <Container>
         <h2 className={css.title}>Trending</h2>
-      </Container>
-      <div className={css.container}>
-        <ul className={css.grid}>
+        <Swiper
+          spaceBetween={16}
+          slidesPerView={5}
+          slidesPerGroup={5}
+          modules={[Navigation]}
+          navigation
+        >
           {data?.results.map((movie) => (
-            <li
+            <SwiperSlide
               onClick={() => onSelect(movie)}
               key={movie.id}
               className={css.item}
@@ -36,10 +44,10 @@ export default function TrendingMovieGrid({ onSelect }: TrendingMovieProps) {
                 />
                 <h2 className={css.subtitle}>{movie.title}</h2>
               </div>
-            </li>
+            </SwiperSlide>
           ))}
-        </ul>
-      </div>
+        </Swiper>
+      </Container>
     </section>
   );
 }

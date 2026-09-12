@@ -15,6 +15,7 @@ import type { ComponentType } from 'react';
 import TrendingMovieGrid from '../TrendingMovieGrid/TrendingMovieGrid';
 import Hero from '../Hero/Hero';
 import Footer from '../Footer/Footer';
+import CommingSoon from '../CommingSoon/CommingSoon';
 
 type ModuleWithDefault<T> = { default: T };
 
@@ -64,6 +65,7 @@ export default function AppBody() {
         }}
       />
       <Toaster position="top-center" reverseOrder={false} />
+      <CommingSoon onSelect={openModal} />
       <TrendingMovieGrid onSelect={openModal} />
       {isLoading && <Loader />}
       {isError ? (

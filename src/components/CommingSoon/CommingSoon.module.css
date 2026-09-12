@@ -1,0 +1,93 @@
+.commingSoon {
+  padding: 20px 0 0 0;
+  background-color: white;
+  overflow-x: hidden;
+}
+
+.grid {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  padding: 20px 0;
+  width: max-content;
+  scrollbar-color: rgb(0, 149, 255);
+  z-index: 997;
+  animation: movieSlider 25s ease-in-out infinite alternate;
+}
+
+.container {
+  position: relative;
+}
+
+.container::before,
+.container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  z-index: 998;
+  pointer-events: none;
+}
+
+.container::before {
+  left: 0;
+  background: linear-gradient(to right, white, transparent);
+}
+
+.container::after {
+  right: 0;
+  background: linear-gradient(to left, white, transparent);
+}
+
+@keyframes movieSlider {
+  0% {
+    transform: translateX(2%);
+  }
+
+  100% {
+    transform: translateX(-65%);
+  }
+}
+
+.item {
+  flex: 0 0 180px;
+}
+
+.title {
+  font-size: 30px;
+  color: #000000;
+  font-weight: 500;
+}
+
+.card {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+.image {
+  width: 100%;
+  height: 280px;
+  border-radius: 6px 6px 0 0;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.subtitle {
+  padding: 10px 10px 0 10px;
+  color: #21201e;
+  font-size: 17px;
+  background: white;
+}
+
+.date {
+  font-size: 14px;
+  color: #21201e;
+  background: white;
+  padding: 10px;
+}
