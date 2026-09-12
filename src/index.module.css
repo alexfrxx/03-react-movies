@@ -12,28 +12,16 @@ ol {
 }
 
 body {
-  background:
-    radial-gradient(
-      circle at 20% 20%,
-      rgba(79, 70, 229, 0.35),
-      transparent 35%
-    ),
-    radial-gradient(
-      circle at 80% 30%,
-      rgba(124, 58, 237, 0.3),
-      transparent 35%
-    ),
-    radial-gradient(circle at 50% 90%, rgba(37, 99, 235, 0.3), transparent 40%),
-    linear-gradient(135deg, #030014 0%, #0b0820 30%, #10072b 55%, #050816 100%);
-
-  background-attachment: fixed;
+  background: black;
+  scroll-behavior: smooth;
+  font-family: 'Proba', sans-serif;
 }
 
 @font-face {
   font-family: 'Proba';
   src:
-    url('assets/fonts/ProbaPro-Light.woff2') format('woff2'),
-    url('assets/fonts/ProbaPro-Light.woff') format('woff');
+    url('./assets/fonts/ProbaPro-Light.woff2') format('woff2'),
+    url('./assets/fonts/ProbaPro-Light.woff') format('woff');
   font-weight: 200;
   font-style: normal;
   font-display: swap;
@@ -42,8 +30,8 @@ body {
 @font-face {
   font-family: 'Proba';
   src:
-    url('assets/fonts/ProbaPro-Regular.woff2') format('woff2'),
-    url('assets/fonts/ProbaPro-Regular.woff') format('woff');
+    url('./assets/fonts/ProbaPro-Regular.woff2') format('woff2'),
+    url('./assets/fonts/ProbaPro-Regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -52,8 +40,8 @@ body {
 @font-face {
   font-family: 'Proba';
   src:
-    url('assets/fonts/ProbaPro-Medium.woff2') format('woff2'),
-    url('assets/fonts/ProbaPro-Medium.woff') format('woff');
+    url('./assets/fonts/ProbaPro-Medium.woff2') format('woff2'),
+    url('./assets/fonts/ProbaPro-Medium.woff') format('woff');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -62,8 +50,8 @@ body {
 @font-face {
   font-family: 'Proba';
   src:
-    url('assets/fonts/ProbaPro-Bold.woff2') format('woff2'),
-    url('assets/fonts/ProbaPro-Bold.woff') format('woff');
+    url('./assets/fonts/ProbaPro-Bold.woff2') format('woff2'),
+    url('./assets/fonts/ProbaPro-Bold.woff') format('woff');
   font-weight: 700;
   font-style: normal;
   font-display: swap;

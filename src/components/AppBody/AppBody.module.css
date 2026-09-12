@@ -25,6 +25,10 @@
 }
 
 .active {
-  font-weight: bold;
-  background-color: #ff000082;
+  font-weight: 900;
+  background-color: white;
+}
+
+.active a {
+  color: black;
 }

@@ -1,18 +1,19 @@
-import css from './App.module.css';
+import css from './AppBody.module.css';
 import SearchBar from '../SearchBar/SearchBar';
 import MovieGrid from '../MovieGrid/MovieGrid';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import Loader from '../Loader/Loader';
 import MovieModal from '../MovieModal/MovieModal';
-import fetchMovies, { fetchFirstMovies } from '../../services/movieService';
 import type { Movie } from '../../types/movie';
-import { toast, Toaster } from 'react-hot-toast';
-import { useEffect, useState } from 'react';
+import { Toaster, toast } from 'react-hot-toast';
+import { useState, useEffect } from 'react';
+import fetchMovies from '../../services/movieService';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
-
 import ReactPaginateModule from 'react-paginate';
 import type { ReactPaginateProps } from 'react-paginate';
 import type { ComponentType } from 'react';
+import TrendingMovieGrid from '../TrendingMovieGrid/TrendingMovieGrid';
+import Hero from '../Hero/Hero';
 
 type ModuleWithDefault<T> = { default: T };
 
@@ -22,7 +23,7 @@ const ReactPaginate = (
   >
 ).default;
 
-function App() {
+export default function AppBody() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
   const [query, setQuery] = useState('');
@@ -30,19 +31,15 @@ function App() {
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ['query', query, page],
-    queryFn: () => {
-      if (!query) {
-        return fetchFirstMovies();
-      }
-
-      return fetchMovies({ str: query, page });
-    },
+    queryFn: () => fetchMovies({ str: query, page }),
+    enabled: Boolean(query),
     placeholderData: keepPreviousData
   });
 
   useEffect(() => {
     if (query && data && data?.results.length === 0) {
       toast.error('No movies found for your request.');
+      setQuery('');
     }
   }, [data, query]);
 
@@ -57,20 +54,25 @@ function App() {
   };
 
   return (
-    <div className={css.app}>
+    <>
+      <Hero />
       <SearchBar
         onSubmit={(query) => {
           setQuery(query);
           setPage(1);
         }}
-      ></SearchBar>
-
+      />
       <Toaster position="top-center" reverseOrder={false} />
+      <TrendingMovieGrid onSelect={openModal} />
       {isLoading && <Loader />}
       {isError ? (
         <ErrorMessage />
       ) : (
-        <MovieGrid onSelect={openModal} movies={data?.results ?? []} />
+        <MovieGrid
+          onSelect={openModal}
+          movies={data?.results ?? []}
+          title={data?.results ? query : ''}
+        />
       )}
       {query && data && data.total_pages > 1 && (
         <ReactPaginate
@@ -88,8 +90,6 @@ function App() {
       {isModalOpen && selectedMovie && (
         <MovieModal onClose={closeModal} movie={selectedMovie}></MovieModal>
       )}
-    </div>
+    </>
   );
 }
-
-export default App;

@@ -1,19 +1,27 @@
-import css from './MovieGrid.module.css';
+import css from './TrendingMovieGrid.module.css';
 import type { Movie } from '../../types/movie';
 import Container from '../Container/Container';
+import { useQuery } from '@tanstack/react-query';
+import { fetchFirstMovies } from '../../services/movieService';
 
-interface MovieGridProps {
+interface TrendingMovieProps {
   onSelect: (movie: Movie) => void;
-  movies: Movie[];
-  title: string;
 }
 
-export default function MovieGrid({ onSelect, movies }: MovieGridProps) {
+export default function TrendingMovieGrid({ onSelect }: TrendingMovieProps) {
+  const { data } = useQuery({
+    queryKey: ['movie'],
+    queryFn: () => fetchFirstMovies()
+  });
+
   return (
-    <section className={css.movieGrid}>
+    <section className={css.trendingMovie}>
       <Container>
+        <h2 className={css.title}>Trending</h2>
+      </Container>
+      <div className={css.container}>
         <ul className={css.grid}>
-          {movies.map((movie) => (
+          {data?.results.map((movie) => (
             <li
               onClick={() => onSelect(movie)}
               key={movie.id}
@@ -31,7 +39,7 @@ export default function MovieGrid({ onSelect, movies }: MovieGridProps) {
             </li>
           ))}
         </ul>
-      </Container>
+      </div>
     </section>
   );
 }

@@ -1,19 +1,29 @@
+.movieGrid {
+  padding: 52px 0;
+}
+
 .grid {
   display: flex;
   justify-content: center;
   gap: 24px;
-  padding: 52px 0;
   flex-wrap: wrap;
+  padding-top: 25px;
 }
 
 .item {
   width: calc((100% - 96px) / 5);
 }
 
+.title {
+  font-size: 36px;
+  color: white;
+  font-weight: 500;
+}
+
 .card {
   position: relative;
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: 6px;
   cursor: pointer;
   transition:
     transform 0.3s ease,
@@ -34,15 +44,14 @@
   display: block;
 }
 
-.title {
+.subtitle {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 16px 20px;
-  margin: 0;
+  padding: 10px 20px;
   color: #21201e;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: bold;
   backdrop-filter: blur(20px);
   background: linear-gradient(
@@ -51,6 +60,5 @@
     rgba(255, 255, 255, 0) 159.1%
   );
   opacity: 0.95;
-  box-sizing: border-box;
   text-align: center;
 }
