@@ -14,7 +14,6 @@
 
 .trendingMovie {
   padding: 64px 0 0;
-  background-color: #000;
 }
 
 .title {
@@ -30,12 +29,17 @@
 .card {
   overflow: hidden;
   cursor: pointer;
-  border-radius: 6px;
   transition: transform 0.3s ease;
+  background-color: white;
 }
 
 .card:hover {
   transform: scale(1.02);
+}
+
+.average {
+  background-color: white;
+  padding: 10px;
 }
 
 .image {
@@ -48,7 +52,7 @@
 
 .subtitle {
   margin: 0;
-  padding: 10px;
+  padding: 15px 10px 0 10px;
   color: #21201e;
   background-color: #fff;
   font-size: 17px;

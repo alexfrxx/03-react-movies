@@ -43,6 +43,9 @@ export default function TrendingMovieGrid({ onSelect }: TrendingMovieProps) {
                   loading="lazy"
                 />
                 <h2 className={css.subtitle}>{movie.title}</h2>
+                <p
+                  className={css.average}
+                >{`${movie.vote_average.toFixed(1)} / 10`}</p>
               </div>
             </SwiperSlide>
           ))}
