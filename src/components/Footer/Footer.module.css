@@ -1,0 +1,13 @@
+.footer {
+  padding: 64px 0;
+}
+
+.list {
+  display: flex;
+  align-items: flex-start;
+  gap: 80px;
+}
+
+.item {
+  width: calc((100% - 240px) / 4);
+}

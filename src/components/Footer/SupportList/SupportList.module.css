@@ -1,0 +1,25 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+h3 {
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.04545;
+  color: #fff;
+}
+
+.supportLink {
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.53333;
+  color: #9094a6;
+  transition: opacity 0.4s ease;
+}
+
+.supportLink:hover,
+.supportLink:focus {
+  opacity: 0.7;
+}

@@ -1,0 +1,12 @@
+.download {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+h3 {
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.04545;
+  color: #fff;
+}

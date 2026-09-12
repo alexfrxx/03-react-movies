@@ -14,6 +14,7 @@ import type { ReactPaginateProps } from 'react-paginate';
 import type { ComponentType } from 'react';
 import TrendingMovieGrid from '../TrendingMovieGrid/TrendingMovieGrid';
 import Hero from '../Hero/Hero';
+import Footer from '../Footer/Footer';
 
 type ModuleWithDefault<T> = { default: T };
 
@@ -90,6 +91,7 @@ export default function AppBody() {
       {isModalOpen && selectedMovie && (
         <MovieModal onClose={closeModal} movie={selectedMovie}></MovieModal>
       )}
+      <Footer />
     </>
   );
 }
